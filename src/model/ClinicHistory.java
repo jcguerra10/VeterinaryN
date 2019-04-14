@@ -1,5 +1,5 @@
 
-//LABORATORIO No3.
+//LABORATORIO No4.
 //PROGRAMA HECHO POR JUAN CAMILO GUERRA TABARES
 //ESTUDIANTE DE LA UNIVERSIDAD ICESI
 package model;
@@ -92,19 +92,19 @@ public class ClinicHistory{
 	public void addMedicine(Medicine newMed){
 		medi.add(newMed);
 	}
-	
+
 	public double knowMedicineCost(){
 		double tot = 0.0;
 		if(medi!=null){
 			for(int i=0;i<medi.size();i++){
-				tot+=medi.get(i).getDoseCost(); 
+				tot+=medi.get(i).getDoseCost();
 			}
 		}
 		return tot;
 	}
-	
+
 	public int calculateDays(int dayCO, int monthCO, int yearCO){
-		int tot = 0;	
+		int tot = 0;
 		if(histoDate1.getYear()<yearCO){
 			if(histoDate1.getMonth()<=monthCO){
 				tot+=360;
@@ -142,7 +142,7 @@ public class ClinicHistory{
 					tot -= dayCO-histoDate1.getDay();
 				}
 			}
-			
+
 		}else{
 			tot+=0.0;
 		}

@@ -1,5 +1,5 @@
 
-//LABORATORIO No3.
+//LABORATORIO No4.
 //PROGRAMA HECHO POR JUAN CAMILO GUERRA TABARES
 //ESTUDIANTE DE LA UNIVERSIDAD ICESI
 package ui;
@@ -20,7 +20,7 @@ public class Main{
 		//
 		ClinicHistory clini = new ClinicHistory("--", "--", "abierto", histoDate1, null);
 		//
-		Pet paca = new Pet("paca", "perro", 12, 32, false, true, null);
+		Pet paca = new Pet("paca", "perro", 12, 32, 1.2, false, true, null);
 		//
 		Clients juan = new Clients ("juan", 20563, "cll 16 #10-86", "3025874962");
 		//
@@ -42,7 +42,6 @@ public class Main{
 		Scanner scanStr = new Scanner (System.in);
 		Scanner scanInt = new Scanner (System.in);
 		Scanner scanDou = new Scanner (System.in);
-		Scanner scanLong = new Scanner (System.in);
 		//
 		System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 		System.out.println("||BIENVENIDO AL PROGRAMA PARA LA VETERINARIA MI PEQUEÑA MASCOTA||");
@@ -100,6 +99,8 @@ public class Main{
 					int age = scanInt.nextInt();
 					System.out.println("DIGITE EL PESO EN KG");
 					double weight = scanDou.nextDouble();
+					System.out.println("DIGITE LA ALTURA DEL ANIMAL");
+					double height = scanDou.nextDouble();
 					System.out.println("HA ESTADO ANTES EN LA VETERINARIA");
 					System.out.println("1. SI");
 					System.out.println("2. NO");
@@ -113,7 +114,7 @@ public class Main{
 					}
 					hospitalizatedNow = true;
 
-					Pet pet = new Pet(name, type, age, weight, hospitalizatedBefore, hospitalizatedNow, null);
+					Pet pet = new Pet(name, type, age, weight, height, hospitalizatedBefore, hospitalizatedNow, null);
 
 					vete.addPettoClient(pet, index);
 

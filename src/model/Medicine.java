@@ -1,4 +1,4 @@
-//LABORATORIO No3.
+//LABORATORIO No4.
 //PROGRAMA HECHO POR JUAN CAMILO GUERRA TABARES
 //ESTUDIANTE DE LA UNIVERSIDAD ICESI
 package model;
@@ -23,21 +23,21 @@ public class Medicine{
 	public void setName(String name){
 		this.name = name;
 	}
-	
+
 	public double getDose(){
 		return dose;
 	}
 	public void setDose(double dose){
 		this.dose = dose;
 	}
-	
+
 	public double getDoseCost(){
 		return doseCost;
 	}
 	public void setDoseCost(double doseCost){
 		this.doseCost = doseCost;
 	}
-	
+
 	public int getFrecuency(){
 		return frecuency;
 	}
@@ -46,15 +46,15 @@ public class Medicine{
 	}
 	//
 	//
-	
+
 	public String showInfoMedi(){
 		String msg = "";
-		
+
 		msg += "NOMBRE DE LA MEDICINA: "+name+"\n";
 		msg += "LA DOSIS: "+dose+"\n";
 		msg += "COSTO POR DOSIS: "+doseCost+"\n";
 		msg += "FRECUENCIA QUE ESTA DEBE SER APLICADA: "+frecuency+"\n";
-		
+
 		return msg;
 	}
-}	
+}

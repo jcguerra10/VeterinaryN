@@ -1,4 +1,4 @@
-//LABORATORIO No3.
+//LABORATORIO No4.
 //PROGRAMA HECHO POR JUAN CAMILO GUERRA TABARES
 //ESTUDIANTE DE LA UNIVERSIDAD ICESI
 package model;
@@ -43,17 +43,19 @@ public class Pet{
 	private String type;
 	private int age;
 	private double weight;
+	private double height;
 	private boolean hospitalizatedBefore;
 	private boolean hospitalizatedNow;
 	//
 	private ClinicHistory histo;
 	private Clients cli;
 	//
-	public Pet(String name, String type, int age, double weight, boolean hospitalizatedBefore, boolean hospitalizatedNow, ClinicHistory histo){
+	public Pet(String name, String type, int age, double weight, double height, boolean hospitalizatedBefore, boolean hospitalizatedNow, ClinicHistory histo){
 		this.name = name;
 		this.type = type;
 		this.age = age;
 		this.weight = weight;
+		this.height = height;
 		this.hospitalizatedBefore = hospitalizatedBefore;
 		this.hospitalizatedNow = hospitalizatedNow;
 		this.histo = histo;
@@ -85,6 +87,13 @@ public class Pet{
 	}
 	public void setWeight(double weight){
 		this.weight = weight;
+	}
+
+	public double getHeight(){
+		return height;
+	}
+	public void setHeight(double height){
+		this.height = height;
 	}
 
 	public boolean getHospitalizatedBefore(){
@@ -189,7 +198,7 @@ public class Pet{
 	}
 
 	public double calculatePriceOfPet(int dayCO, int monthCO, int yearCO){
-		
+
 		double tot = 0.0;
 		if(histo!=null){
 			tot += histo.knowMedicineCost();
@@ -242,11 +251,27 @@ public class Pet{
 					tot+=0;
 				}
 			}
-			
+
 		}
 		return tot;
 	}
-	
-	
-	
+	/**
+	*Description This method allows to calculate the body mass index for a pet.
+	*pre: The pet was created before and its attributes height and weight are not null neither height must be zero.
+	*post: The BMI is calculated.
+	*@return The pet body mass index.
+	*@throws If the height is zero, so an exception is thrown due to the division on zero does not exist.
+	*/
+	public double bmiCalc(){
+		double tot = 0;
+		if (height>0&&weight>0) {
+			tot = weight/(height*height);
+		}else {
+			tot = 0;
+		}
+		return tot;
+	}
+
+
+
 }

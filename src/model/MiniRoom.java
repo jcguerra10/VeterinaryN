@@ -1,4 +1,4 @@
-//LABORATORIO No3.
+//LABORATORIO No4.
 //PROGRAMA HECHO POR JUAN CAMILO GUERRA TABARES
 //ESTUDIANTE DE LA UNIVERSIDAD ICESI
 package model;
@@ -28,7 +28,7 @@ public class MiniRoom{
 	public void setPet(Pet pet){
 		this.pet = pet;
 	}
-	
+
 	public String getHistoClinic(){
 		return histoClinic;
 	}
@@ -38,7 +38,7 @@ public class MiniRoom{
 	// methods
 	public String getMiniRoom(){
 		String msg = "";
-	
+
 		msg += "========================== CUARTO ==========================\n";
 		if(available == false){
 			msg += "DISPONIBILIDAD: NO HAY DISPONIBILIDAD \n";
@@ -58,8 +58,8 @@ public class MiniRoom{
 			msg += pet.getName();
 		return msg;
 	}
-	
-	
-	
-	
+
+
+
+
 }

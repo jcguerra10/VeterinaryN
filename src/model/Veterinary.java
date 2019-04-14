@@ -1,4 +1,4 @@
-//LABORATORIO No3.
+//LABORATORIO No4.
 //PROGRAMA HECHO POR JUAN CAMILO GUERRA TABARES
 //ESTUDIANTE DE LA UNIVERSIDAD ICESI
 package model;
@@ -91,7 +91,7 @@ public class Veterinary{
 
 		return msg;
 	}
-	
+
 	public String namePetSpecific(int indexClientDA, int indexPetDA){
 		String msg ="";
 		msg += client.get(indexClientDA).getPetName(indexPetDA);
@@ -165,7 +165,7 @@ public class Veterinary{
 
 		return tot;
 	}
-	
+
 	public String dischargeAPet(String nameOfDischarge, MiniRoom miniDischarge){
 		String msg = "";
 		for(int i=0;i<mini.length; i++){
