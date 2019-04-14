@@ -220,6 +220,42 @@ public class Main{
 					MiniRoom miniDischarge = new MiniRoom (true, null, null);
 					System.out.println (vete.dischargeAPet(nameOfDischarge, miniDischarge));
 				break;
+				case (11):
+				String phPa = "";
+				String dirPa = "";
+				//
+				System.out.println("DIGITE EL DUEÑO QUE QUIERE ACTUALIZAR: \n");
+				System.out.println(vete.shortInfoClient());
+				int cliPa = scanInt.nextInt();
+				System.out.println("QUIERE ACTUALIZAR TELEFONO?");
+				System.out.println("1- SI");
+				System.out.println("2- NO");
+				int op = scanInt.nextInt();
+				if (op == 1) {
+					System.out.println("DIGITE EL NUEVO TELEFONO:");
+					phPa = scanStr.nextLine();
+				}else if (op == 2) {
+					phPa = null;
+				}else {
+					System.out.println("ERROR");
+					exit = true;
+				}
+				System.out.println("QUIERE ACTUALIZAR DIRECCION?");
+				System.out.println("1- SI");
+				System.out.println("2- NO");
+				int op2 = scanInt.nextInt();
+				if (op2 == 1) {
+					System.out.println("DIGITE LA NUEVA DIRECCION:");
+					dirPa = scanStr.nextLine();
+				}else if (op2 == 2) {
+					dirPa = null;
+				}else {
+					System.out.println("ERROR");
+					exit = true;
+				}
+				//
+				vete.updateClient(phPa, dirPa, cliPa);
+				break;
 				default:
 					System.out.println ("DIGITO NO VALIDO");
 			}
@@ -239,6 +275,7 @@ public class Main{
 		System.out.println("8.  MOSTRAR LA INFORMACION DE LOS CUARTOS");
 		System.out.println("9.  PARA SABER EL PRECIO DE LA ESTADIA DEL ANIMAL");
 		System.out.println("10. PARA DAR DE ALTA A UN ANIMAL");
+		System.out.println("11. PARA ACTUALIZAR TELEFONO Y DIRECCION DEL CLIENTE");
 		System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||");
 	}
 }
