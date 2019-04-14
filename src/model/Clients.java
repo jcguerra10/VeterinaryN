@@ -30,14 +30,14 @@ public class Clients{
 	public int getId(){
 		return id;
 	}
-	public void setId(){
+	public void setId(int id){
 		this.id = id;
 	}
 
 	public String getAddress(){
 		return address;
 	}
-	public void setAddress(){
+	public void setAddress(String address){
 		this.address = address;
 	}
 
@@ -141,6 +141,11 @@ public class Clients{
 		double tot = 0.0;
 		tot+=pet.get(indexPetCP).calculatePriceOfPet(dayT, monthT, yearT);
 		return tot;
+	}
+
+	public void updateClient(String phPa, String dirPa){
+		setPhone(phPa);
+		setAddress(dirPa);
 	}
 
 }

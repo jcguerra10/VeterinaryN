@@ -220,6 +220,17 @@ public class Main{
 					MiniRoom miniDischarge = new MiniRoom (true, null, null);
 					System.out.println (vete.dischargeAPet(nameOfDischarge, miniDischarge));
 				break;
+				case (11):
+				System.out.println("DIGITE EL DUEÑO QUE QUIERE ACTUALIZAR: \n");
+				System.out.println(vete.shortInfoClient());
+				int cliPa = scanInt.nextInt();
+				System.out.println("DIGITE EL NUEVO TELEFONO:");
+				String phPa = scanStr.nextLine();
+				System.out.println("DIGITE LA NUEVA DIRECCION:");
+				String dirPa = scanStr.nextLine();
+				//
+				vete.updateClient(phPa, dirPa, cliPa);
+				break;
 				default:
 					System.out.println ("DIGITO NO VALIDO");
 			}
@@ -239,6 +250,7 @@ public class Main{
 		System.out.println("8.  MOSTRAR LA INFORMACION DE LOS CUARTOS");
 		System.out.println("9.  PARA SABER EL PRECIO DE LA ESTADIA DEL ANIMAL");
 		System.out.println("10. PARA DAR DE ALTA A UN ANIMAL");
+		System.out.println("11. PARA ACTUALIZAR TELEFONO Y DIRECCION DEL CLIENTE");
 		System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||");
 	}
 }

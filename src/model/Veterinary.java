@@ -179,5 +179,9 @@ public class Veterinary{
 		return msg;
 	}
 
+	public void updateClient(String phPa, String dirPa, int cliPa){
+		client.get(cliPa).updateClient(phPa, dirPa);
+	}
+
 
 }
