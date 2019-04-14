@@ -149,4 +149,13 @@ public class ClinicHistory{
 		return tot;
 	}
 
+	public void changeSymptom(String newSymp){
+		String msg = "";
+		//
+		msg += getSymptom()+"\n";
+		msg += newSymp+"\n";
+		//
+		setSymptom(msg);
+	}
+
 }

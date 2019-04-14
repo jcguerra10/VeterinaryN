@@ -175,7 +175,7 @@ public class Main{
 					// newHistory += vete.getHistoClinicSpecific(indexClientFH, indexPetFH);
 					boolean ava = false;
 					//
-					MiniRoom miniWithPet = new MiniRoom (ava, addPet, null);
+					MiniRoom miniWithPet = new MiniRoom (ava, addPet);
 					System.out.println(vete.addPetToMini(miniWithPet));
 				break;
 				case(8):
@@ -217,7 +217,7 @@ public class Main{
 					System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 					System.out.println("EL PRECIO DE DEBE ES: "+vete.calculatePriceOfPet(indexClientDA, indexPetDA, dayD, monthD, yearD));
 					System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-					MiniRoom miniDischarge = new MiniRoom (true, null, null);
+					MiniRoom miniDischarge = new MiniRoom (true, null);
 					System.out.println (vete.dischargeAPet(nameOfDischarge, miniDischarge));
 				break;
 				case (11):
@@ -256,6 +256,16 @@ public class Main{
 				//
 				vete.updateClient(phPa, dirPa, cliPa);
 				break;
+				case (12):
+					//
+					System.out.println("DIGITE EL DUEÑO QUE QUIERE ACTUALIZAR: \n");
+					System.out.println(vete.showShortInfoMini());
+					int miniI = scanInt.nextInt();
+					System.out.println("DIGITE EL SINTOMA QUE QUIERE AGREGAR: \n");
+					String sym = scanStr.nextLine();
+					//
+					vete.changeSymptom(sym, miniI);
+				break;
 				default:
 					System.out.println ("DIGITO NO VALIDO");
 			}
@@ -276,6 +286,7 @@ public class Main{
 		System.out.println("9.  PARA SABER EL PRECIO DE LA ESTADIA DEL ANIMAL");
 		System.out.println("10. PARA DAR DE ALTA A UN ANIMAL");
 		System.out.println("11. PARA ACTUALIZAR TELEFONO Y DIRECCION DEL CLIENTE");
+		System.out.println("12. PARA AGREGAR UN NUEVO SINTOMA");
 		System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||");
 	}
 }

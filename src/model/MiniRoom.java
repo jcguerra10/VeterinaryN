@@ -10,7 +10,7 @@ public class MiniRoom{
 	//
 	private Pet pet;
 	//
-	public MiniRoom(boolean available, Pet pet, String histoClinic){
+	public MiniRoom(boolean available, Pet pet){
 		this.available = available;
 		this.pet = pet;
 	}
@@ -27,13 +27,6 @@ public class MiniRoom{
 	}
 	public void setPet(Pet pet){
 		this.pet = pet;
-	}
-
-	public String getHistoClinic(){
-		return histoClinic;
-	}
-	public void setHistoClinic(String histoClinic){
-		this.histoClinic = histoClinic;
 	}
 	// methods
 	public String getMiniRoom(){
@@ -58,7 +51,16 @@ public class MiniRoom{
 			msg += pet.getName();
 		return msg;
 	}
-
+	public String getHistoClinic(){
+		String msg = "";
+		if (pet != null){
+			msg += pet.getClinicHistoryPet();
+		}
+		return msg;
+	}
+	public void changeSymptom(String newSymp){
+		pet.changeSymptom(newSymp);
+	}
 
 
 

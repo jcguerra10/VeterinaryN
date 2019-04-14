@@ -16,17 +16,14 @@ public class Veterinary{
 		client = new ArrayList<Clients>();
 		mini = new MiniRoom[MINI_ROOM];
 
-		mini[0] = new MiniRoom (true, null, null);
-		mini[1] = new MiniRoom (true, null, null);
-		mini[2] = new MiniRoom (true, null, null);
-		mini[3] = new MiniRoom (true, null, null);
-		mini[4] = new MiniRoom (true, null, null);
-		mini[5] = new MiniRoom (true, null, null);
-		mini[6] = new MiniRoom (true, null, null);
-		mini[7] = new MiniRoom (true, null, null);
-
-
-		// mini = new ArrayList<MiniRoom>();
+		mini[0] = new MiniRoom (true, null);
+		mini[1] = new MiniRoom (true, null);
+		mini[2] = new MiniRoom (true, null);
+		mini[3] = new MiniRoom (true, null);
+		mini[4] = new MiniRoom (true, null);
+		mini[5] = new MiniRoom (true, null);
+		mini[6] = new MiniRoom (true, null);
+		mini[7] = new MiniRoom (true, null);
 	}
 	//get set
 	public String getName(){
@@ -97,14 +94,6 @@ public class Veterinary{
 		msg += client.get(indexClientDA).getPetName(indexPetDA);
 		return msg;
 	}
-
-	// public String createHistoryClinicPet(indexClient, indexPet){
-		// String msg = "";
-
-		// msg += client.get(indexclient).createHistoryClinicPet(indexPet);
-		// return msg;
-	// }
-
 
 	public void createHistoryClinicPet(int indexClient, int indexPet, String statush, String symptomh, String diagnosish, Dated histoDate1h, Dated histoDate2h){
 		if(client != null){
@@ -183,5 +172,18 @@ public class Veterinary{
 		client.get(cliPa).updateClient(phPa, dirPa);
 	}
 
+	public void changeSymptom(String newSymp, int indexMini){
+		if (mini[indexMini]!=null) {
+			mini[indexMini].changeSymptom(newSymp);
+		}
+	}
+
+	public String showShortInfoMini(){
+		String msg = "";
+		for(int i=0;i<mini.length;i++){
+			msg += i +"-"+mini[i].showNamePet()+"\n";
+		}
+		return msg;
+	}
 
 }

@@ -167,28 +167,25 @@ public class Pet{
 		if(cli!=null){
 			msg += cli.histoClinic();
 		}
-		msg += "|||||||||||INFO ANIMAL|||||||||||\n";
-		msg += "NOMBRE: "+name+"\n";
-		msg += "PESO: "+weight+"\n";
-		if(type.equals(DOG)){
-			msg += "TIPO: "+DOG+"\n";
-		}else if(type.equals(CAT)){
-			msg += "TIPO: "+CAT+"\n";
-		}else if(type.equals(BIRD)){
-			msg += "TIPO: "+BIRD+"\n";
-		}else {
-			msg += "TIPO: "+OTHER+"\n";
-		}
-		msg += "EDAD: "+age+"\n";
-		msg += "||||||||||||||||||||||||||||||||| \n";
-		msg += "EL ESTADO DE LA HISTORIA CLINICA: "+histo.getStatus()+"\n";
-		msg += "SINTOMAS: \n";
-		msg += histo.getSymptom()+"\n";
-		msg += "DIAGNOSTICO: \n";
-		msg += histo.getDiagnosis()+"\n";
-
-
-
+			msg += "|||||||||||INFO ANIMAL|||||||||||\n";
+			msg += "NOMBRE: "+name+"\n";
+			msg += "PESO: "+weight+"\n";
+			if(type.equals(DOG)){
+				msg += "TIPO: "+DOG+"\n";
+			}else if(type.equals(CAT)){
+				msg += "TIPO: "+CAT+"\n";
+			}else if(type.equals(BIRD)){
+				msg += "TIPO: "+BIRD+"\n";
+			}else {
+				msg += "TIPO: "+OTHER+"\n";
+			}
+			msg += "EDAD: "+age+"\n";
+			msg += "||||||||||||||||||||||||||||||||| \n";
+			msg += "EL ESTADO DE LA HISTORIA CLINICA: "+histo.getStatus()+"\n";
+			msg += "SINTOMAS: \n";
+			msg += histo.getSymptom()+"\n";
+			msg += "DIAGNOSTICO: \n";
+			msg += histo.getDiagnosis()+"\n";
 		return msg;
 	}
 	public void addMedicine(Medicine newMed){
@@ -270,6 +267,9 @@ public class Pet{
 			tot = 0;
 		}
 		return tot;
+	}
+	public void changeSymptom(String newSymp){
+		histo.changeSymptom(newSymp);
 	}
 
 
