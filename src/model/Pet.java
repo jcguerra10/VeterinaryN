@@ -271,6 +271,9 @@ public class Pet{
 	public void changeSymptom(String newSymp){
 		histo.changeSymptom(newSymp);
 	}
+	public void addNotes(String newNotes){
+   		histo.addNotes(newNotes);
+	}
 
 
 

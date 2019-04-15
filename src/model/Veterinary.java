@@ -186,4 +186,8 @@ public class Veterinary{
 		return msg;
 	}
 
+	public void addNotes(String newNotes, int iPet){
+   		mini[iPet].addNotes(newNotes);
+	}
+
 }

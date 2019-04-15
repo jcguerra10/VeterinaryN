@@ -266,6 +266,15 @@ public class Main{
 					//
 					vete.changeSymptom(sym, miniI);
 				break;
+				case(13):
+   					System.out.println("DIGITE EL ANIMAL QUE QUIERE AGREGAR NOTAS: \n");
+				   	System.out.println(vete.showShortInfoMini());
+				   	int indexMiniN = scanInt.nextInt();
+				   	System.out.println("DIGITE LA NOTA QUE QUIERE AGREGAR: \n");
+				   	String notes = scanStr.nextLine();
+				   	//
+				   	vete.addNotes(notes, indexMiniN);
+				break;
 				default:
 					System.out.println ("DIGITO NO VALIDO");
 			}
@@ -287,6 +296,7 @@ public class Main{
 		System.out.println("10. PARA DAR DE ALTA A UN ANIMAL");
 		System.out.println("11. PARA ACTUALIZAR TELEFONO Y DIRECCION DEL CLIENTE");
 		System.out.println("12. PARA AGREGAR UN NUEVO SINTOMA");
+		System.out.println("13. PARA AGREGAR NOTAS");
 		System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||");
 	}
 }

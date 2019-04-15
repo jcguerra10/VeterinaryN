@@ -61,6 +61,9 @@ public class MiniRoom{
 	public void changeSymptom(String newSymp){
 		pet.changeSymptom(newSymp);
 	}
+	public void addNotes(String newNotes){
+   		pet.addNotes(newNotes);
+	}
 
 
 

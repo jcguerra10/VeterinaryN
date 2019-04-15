@@ -157,5 +157,15 @@ public class ClinicHistory{
 		//
 		setSymptom(msg);
 	}
+	
+	public void addNotes(String newNotes){
+	String msg = "";
+	//
+	msg += getDiagnosis()+"\n";
+	msg += newNotes+"\n";
+	//
+	setDiagnosis(msg);
+	}
+
 
 }
