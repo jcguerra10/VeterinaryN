@@ -80,12 +80,15 @@ public class ClinicHistory{
 		}
 		msg += "SU SINTOMA ES EL SIGUIENTE: \n"+symptom+"\n";
 		msg += "EL DIAGNOSTICO: \n"+diagnosis+"\n";
-		msg += "--------------------------------------------\n";
+		msg += "><><><><><><><><><><><><><><><><><><><><><><><><><><><\n";
 		if(medi.isEmpty()==false){
 			for(int i=0;i<medi.size();i++){
 				msg += medi.get(i).showInfoMedi();
 			}
+		}else {
+			msg += "NO HAY MEDICINA PARA EL ANIMAL\n";
 		}
+		msg += "======================================================\n";
 		return msg;
 	}
 
@@ -157,7 +160,7 @@ public class ClinicHistory{
 		//
 		setSymptom(msg);
 	}
-	
+
 	public void addNotes(String newNotes){
 	String msg = "";
 	//

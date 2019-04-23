@@ -32,7 +32,7 @@ public class MiniRoom{
 	public String getMiniRoom(){
 		String msg = "";
 
-		msg += "========================== CUARTO ==========================\n";
+		msg += "========================== CUARTO ===========================\n";
 		if(available == false){
 			msg += "DISPONIBILIDAD: NO HAY DISPONIBILIDAD \n";
 		}else{

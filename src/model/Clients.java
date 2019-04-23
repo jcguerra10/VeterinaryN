@@ -62,12 +62,12 @@ public class Clients{
 
 	public String infoClientWithPet(){
 		String msg = "";
-
+		msg += "======================================================\n";
 		msg += "EL NOMBRE DEL CLIENTE ES: "+name+"\n";
 		msg += "SU IDENTIDICACION ES: "+id+"\n";
 		msg += "LA DIRECCION: "+address+"\n";
 		msg += "SU TELEFONO: "+phone+"\n";
-		msg += "--------------------------------------------\n\n";
+		msg += "><><><><><><><><><><><><><><><><><><><><><><><><><><><\n";
 		if(pet.isEmpty()==false){
 			for(int i=0;i<pet.size(); i++){
 				msg += pet.get(i).infoPet();
@@ -149,6 +149,33 @@ public class Clients{
 		}if (dirPa != null) {
 			setAddress(dirPa);
 		}
+	}
+
+	public void newService(String servv, int indexPetService, int todayDays, int todayMonths, int todayYears){
+		pet.get(indexPetService).newService(servv, getId(), todayDays, todayMonths, todayYears);
+	}
+
+	public double calcTotalPetIncome(int dayCO, int monthCO, int yearCO){
+		double tot = 0.0;
+		if (pet!=null) {
+			for (int i=0;i<pet.size();i++) {
+				tot += pet.get(i).calculatePriceOfPet(dayCO, monthCO, yearCO);
+			}
+			for (int k=0;k<pet.size();k++) {
+				tot += pet.get(k).totService();
+			}
+		}
+		return tot;
+	}
+
+	public double averageServicesIncome(String typeS){
+		double tot = 0.0;
+		if (pet!=null) {
+			for (int i=0;i<pet.size();i++) {
+				tot += pet.get(i).averageServicesIncome(typeS);
+			}
+		}
+		return tot;
 	}
 
 }

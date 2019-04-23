@@ -15,7 +15,9 @@ public class Main{
 	}
 
 	public void init(){
-
+		Service serv1 = new Service(null, 0.0, null, 0, new Dated(15,4,2018));
+		Service serv2 = new Service(null, 0.0, null, 0, new Dated(16,5,2018));
+		//
 		Dated histoDate1 = new Dated (10, 02, 2018);
 		//
 		ClinicHistory clini = new ClinicHistory("--", "--", "abierto", histoDate1, null);
@@ -221,40 +223,40 @@ public class Main{
 					System.out.println (vete.dischargeAPet(nameOfDischarge, miniDischarge));
 				break;
 				case (11):
-				String phPa = "";
-				String dirPa = "";
-				//
-				System.out.println("DIGITE EL DUEÑO QUE QUIERE ACTUALIZAR: \n");
-				System.out.println(vete.shortInfoClient());
-				int cliPa = scanInt.nextInt();
-				System.out.println("QUIERE ACTUALIZAR TELEFONO?");
-				System.out.println("1- SI");
-				System.out.println("2- NO");
-				int op = scanInt.nextInt();
-				if (op == 1) {
-					System.out.println("DIGITE EL NUEVO TELEFONO:");
-					phPa = scanStr.nextLine();
-				}else if (op == 2) {
-					phPa = null;
-				}else {
-					System.out.println("ERROR");
-					exit = true;
-				}
-				System.out.println("QUIERE ACTUALIZAR DIRECCION?");
-				System.out.println("1- SI");
-				System.out.println("2- NO");
-				int op2 = scanInt.nextInt();
-				if (op2 == 1) {
-					System.out.println("DIGITE LA NUEVA DIRECCION:");
-					dirPa = scanStr.nextLine();
-				}else if (op2 == 2) {
-					dirPa = null;
-				}else {
-					System.out.println("ERROR");
-					exit = true;
-				}
-				//
-				vete.updateClient(phPa, dirPa, cliPa);
+					String phPa = "";
+					String dirPa = "";
+					//
+					System.out.println("DIGITE EL DUEÑO QUE QUIERE ACTUALIZAR: \n");
+					System.out.println(vete.shortInfoClient());
+					int cliPa = scanInt.nextInt();
+					System.out.println("QUIERE ACTUALIZAR TELEFONO?");
+					System.out.println("1- SI");
+					System.out.println("2- NO");
+					int op = scanInt.nextInt();
+					if (op == 1) {
+						System.out.println("DIGITE EL NUEVO TELEFONO:");
+						phPa = scanStr.nextLine();
+					}else if (op == 2) {
+						phPa = null;
+					}else {
+						System.out.println("ERROR");
+						exit = true;
+					}
+					System.out.println("QUIERE ACTUALIZAR DIRECCION?");
+					System.out.println("1- SI");
+					System.out.println("2- NO");
+					int op2 = scanInt.nextInt();
+					if (op2 == 1) {
+						System.out.println("DIGITE LA NUEVA DIRECCION:");
+						dirPa = scanStr.nextLine();
+					}else if (op2 == 2) {
+						dirPa = null;
+					}else {
+						System.out.println("ERROR");
+						exit = true;
+					}
+					//
+					vete.updateClient(phPa, dirPa, cliPa);
 				break;
 				case (12):
 					//
@@ -274,6 +276,59 @@ public class Main{
 				   	String notes = scanStr.nextLine();
 				   	//
 				   	vete.addNotes(notes, indexMiniN);
+				break;
+				case (14):
+					System.out.println("DIGITE EL DIA DE HOY:\n");
+					int todayDays = scanInt.nextInt();
+					System.out.println("DIGITE EL MES DE HOY:\n");
+					int todayMonths = scanInt.nextInt();
+					System.out.println("DIGITE EL ANIO DE HOY:\n");
+					int todayYears = scanInt.nextInt();
+					//
+					System.out.println("QUE SERVICIO QUIERE REALIZAR?");
+					System.out.println("1- BAÑO DE MASCOTA");
+					System.out.println("2- BAÑO DE MASCOTA CON DOMICILIO");
+					System.out.println("3- CORTE DE UNAS");
+					System.out.println("4- PROFILIAXIS DENTAL");
+					System.out.println("5- APLICACION DE VACUNAS");
+					int indexService = scanInt.nextInt();
+					String servv = "";
+					if (indexService == 1){
+						servv = "Bano veterinaria";
+					}else if (indexService == 2) {
+						servv = "Bano domicilio";
+					}else if (indexService == 3) {
+						servv = "Corte de uñas";
+					}else if (indexService == 4) {
+						servv = "Profilaxis Dental";
+					}else if (indexService == 5) {
+						servv = "Vacunas";
+					}
+					System.out.println("EL DUEÑO DE LA MASCOTA QUE QUIERE HACER EL SERVICIO \n");
+					System.out.println(vete.shortInfoClient());
+					int indexClientService = scanInt.nextInt();
+					System.out.println("A QUE MASCOTA DESEA QUIERE HACER EL SERVICIO:\n");
+					System.out.println(vete.shortInfoClientPet(indexClientService));
+					int indexPetService = scanInt.nextInt();
+					//
+					vete.newService(servv, indexClientService, indexPetService, todayDays, todayMonths, todayYears);
+
+				break;
+				case (15):
+					System.out.println("DIGITE EL DIA DE HOY:\n");
+					int todayDay = scanInt.nextInt();
+					System.out.println("DIGITE EL MES DE HOY:\n");
+					int todayMonth = scanInt.nextInt();
+					System.out.println("DIGITE EL ANIO DE HOY:\n");
+					int todayYear = scanInt.nextInt();
+					System.out.println("LOS INGRESOS TOTALES DE LA VETERINARIA SON: "+vete.calcTotalIncome(todayDay, todayMonth, todayYear));
+				break;
+				case (16):
+					System.out.println("EL PROMEDIO DEL SERVICIO Bano veterinaria: "+vete.averageServicesIncome("Bano veterinaria")+"\n");
+					System.out.println("EL PROMEDIO DEL SERVICIO Bano domicilio: "+vete.averageServicesIncome("Bano domicilio")+"\n");
+					System.out.println("EL PROMEDIO DEL SERVICIO Corte de uñas: "+vete.averageServicesIncome("Corte de uñas")+"\n");
+					System.out.println("EL PROMEDIO DEL SERVICIO Profilaxis Dental: "+vete.averageServicesIncome("Profilaxis Dental")+"\n");
+					System.out.println("EL PROMEDIO DEL SERVICIO Vacunas: "+vete.averageServicesIncome("Vacunas")+"\n");
 				break;
 				default:
 					System.out.println ("DIGITO NO VALIDO");
@@ -297,6 +352,9 @@ public class Main{
 		System.out.println("11. PARA ACTUALIZAR TELEFONO Y DIRECCION DEL CLIENTE");
 		System.out.println("12. PARA AGREGAR UN NUEVO SINTOMA");
 		System.out.println("13. PARA AGREGAR NOTAS");
+		System.out.println("14. REALIZAR UN SERVICIO");
+		System.out.println("15. SABER EL TOTAL DE INGRESOS: ");
+		System.out.println("16. SABER EL PROMEDIO DE LOS INGRESOS DE SERVICIOS");
 		System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||");
 	}
 }

@@ -49,6 +49,7 @@ public class Pet{
 	//
 	private ClinicHistory histo;
 	private Clients cli;
+	private ArrayList<Service>serv;
 	//
 	public Pet(String name, String type, int age, double weight, double height, boolean hospitalizatedBefore, boolean hospitalizatedNow, ClinicHistory histo){
 		this.name = name;
@@ -59,6 +60,7 @@ public class Pet{
 		this.hospitalizatedBefore = hospitalizatedBefore;
 		this.hospitalizatedNow = hospitalizatedNow;
 		this.histo = histo;
+		serv = new ArrayList<Service>();
 	}
 	//get set
 	public String getName(){
@@ -122,6 +124,12 @@ public class Pet{
 	public void setCli(Clients Cli){
 		this.cli = cli;
 	}
+	public ArrayList<Service> getService(){
+		return serv;
+	}
+	public void setService(ArrayList<Service>serv){
+		this.serv = serv;
+	}
 
 	//methods
 	public void addHistoInfo(String statush, String symptomh, String diagnosish, Dated histoDate1h, Dated histoDate2h){
@@ -131,8 +139,7 @@ public class Pet{
 
 	public String infoPet(){
 		String msg = "";
-		msg += "=====================================================\n";
-		msg += "=====================================================\n";
+		msg += "><><><><><><><><><><><><><><><><><><><><><><><><><><><\n";
 		if(type.equals(DOG)){
 			msg += "EL NOMBRE DEL ANIMAL TIPO "+DOG+" ES: "+name+"\n";
 		}else if(type.equals(CAT)){
@@ -152,12 +159,17 @@ public class Pet{
 		if(hospitalizatedNow == true){
 			msg += "EL ANIMAL ESTA HOSPITALIZADO \n";
 		}else{
-			msg += "EL ANIMAL ESTA HOSPITALIZADO \n";
+			msg += "EL ANIMAL NO ESTA HOSPITALIZADO \n";
 		}
-		msg += "--------------------------------------------\n\n";
+		msg += "><><><><><><><><><><><><><><><><><><><><><><><><><><><\n";
 		if(histo != null){
 			msg += "HISTORIA CLINICA: \n";
 			msg += histo.infoClinicHistory();
+		}
+		if(serv!=null){
+			for (int i=0;i<serv.size();i++) {
+				msg += serv.get(i).infoService();
+			}
 		}
 		return msg;
 	}
@@ -167,7 +179,7 @@ public class Pet{
 		if(cli!=null){
 			msg += cli.histoClinic();
 		}
-			msg += "|||||||||||INFO ANIMAL|||||||||||\n";
+			msg += "><><><><><><><><><><><><>INFO ANIMAL<><><><><><><><><><><><><\n";
 			msg += "NOMBRE: "+name+"\n";
 			msg += "PESO: "+weight+"\n";
 			if(type.equals(DOG)){
@@ -180,7 +192,7 @@ public class Pet{
 				msg += "TIPO: "+OTHER+"\n";
 			}
 			msg += "EDAD: "+age+"\n";
-			msg += "||||||||||||||||||||||||||||||||| \n";
+			msg += "><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>\n";
 			msg += "EL ESTADO DE LA HISTORIA CLINICA: "+histo.getStatus()+"\n";
 			msg += "SINTOMAS: \n";
 			msg += histo.getSymptom()+"\n";
@@ -273,6 +285,33 @@ public class Pet{
 	}
 	public void addNotes(String newNotes){
    		histo.addNotes(newNotes);
+	}
+
+	public void newService(String servv, int idCli, int todayDays, int todayMonths, int todayYears){
+		Dated addDate = new Dated(todayDays, todayMonths, todayYears);
+		Service addService = new Service (servv, 0, getName(), idCli, addDate);
+		serv.add(addService);
+		serv.get(serv.size()-1).setIncome();
+	}
+	public double totService(){
+		double tot = 0.0;
+		if (serv!=null){
+			for (int i=0;i<serv.size();i++) {
+				tot += serv.get(i).getCost();
+			}
+		}
+		return tot;
+	}
+	public double averageServicesIncome(String typeS){
+		double tot = 0.0;
+		if (serv!=null) {
+			for (int i=0;i<serv.size();i++) {
+				if (serv.get(i).getTypeOfService().equals(typeS)) {
+					tot += serv.get(i).getCost();
+				}
+			}
+		}
+		return tot;
 	}
 
 

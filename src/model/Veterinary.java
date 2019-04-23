@@ -190,4 +190,31 @@ public class Veterinary{
    		mini[iPet].addNotes(newNotes);
 	}
 
+	public void newService(String servv, int indexClientService, int indexPetService, int todayDays, int todayMonths, int todayYears){
+		client.get(indexClientService).newService(servv, indexPetService, todayDays, todayMonths, todayYears);
+	}
+
+	public double calcTotalIncome(int todayDay, int todayMonth, int todayYear){
+		double tot = 0.0;
+		if (client!=null) {
+			for (int i=0;i<client.size();i++) {
+				tot += client.get(i).calcTotalPetIncome(todayDay, todayMonth, todayYear);
+			}
+		}
+		return tot;
+	}
+
+	public double averageServicesIncome(String typeS){
+		double tot = 0.0;
+		int div = 0;
+		if (client!=null) {
+			for (int i=0;i<client.size();i++) {
+				tot += client.get(i).averageServicesIncome(typeS);
+				div++;
+			}
+			tot = tot/div;
+		}
+		return tot;
+	}
+
 }
