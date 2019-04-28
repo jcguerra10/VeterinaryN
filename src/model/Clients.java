@@ -199,4 +199,14 @@ public class Clients{
 		return average;
 	}
 
+	public String servicesProvided(int todayDayA, int todayMonthA, int todayYearA, int todayDayB, int todayMonthB, int todayYearB){
+		String msg = "";
+		if (pet != null) {
+			for (int i=0;i<pet.size();i++) {
+				msg += pet.get(i).servicesProvided(todayDayA, todayMonthA, todayYearA, todayDayB, todayMonthB, todayYearB)+"\n";
+			}
+		}
+		return msg;
+	}
+
 }

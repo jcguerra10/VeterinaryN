@@ -350,5 +350,18 @@ public class Pet{
 		return average;
 	}
 
+	public String servicesProvided(int todayDayA, int todayMonthA, int todayYearA, int todayDayB, int todayMonthB, int todayYearB){
+		String msg = "";
+		//
+		if (serv != null) {
+			for (int i=0;i<serv.size();i++) {
+				if (serv.get(i).knowRange(todayDayA, todayMonthA, todayYearA, todayDayB, todayMonthB, todayYearB) == true) {
+					msg += serv.get(i).infoService()+"\n";
+				}
+			}
+		}
+		return msg;
+	}
+
 
 }

@@ -249,4 +249,14 @@ public class Veterinary{
 		return average;
 	}
 
+	public String servicesProvided(int todayDayA, int todayMonthA, int todayYearA, int todayDayB, int todayMonthB, int todayYearB){
+		String msg = "";
+		if (client != null) {
+			for (int i=0;i<client.size();i++) {
+				msg += client.get(i).servicesProvided(todayDayA, todayMonthA, todayYearA, todayDayB, todayMonthB, todayYearB)+"\n";
+			}
+		}
+		return msg;
+	}
+
 }

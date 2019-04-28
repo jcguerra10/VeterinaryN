@@ -347,6 +347,22 @@ public class Main{
 					//
 					System.out.println("EL PROMEDIO DE LAS GANANCIAS EN LA SEMANA ES :"+vete.averageOfWeek(todayDayA, todayMonthA, todayYearA, todayDayB));
 				break;
+				case (18):
+					System.out.println("DIGITE EL DIA INICIAL");
+					int todayDay1 = scanInt.nextInt();
+					System.out.println("DIGITE EL MES INICIAL");
+					int todayMonth1 = scanInt.nextInt();
+					System.out.println("DIGITE EL ANIO INICIAL");
+					int todayYear1 = scanInt.nextInt();
+					//
+					System.out.println("DIGITE EL DIA FINAL");
+					int todayDay2 = scanInt.nextInt();
+					System.out.println("DIGITE EL MES FINAL");
+					int todayMonth2 = scanInt.nextInt();
+					System.out.println("DIGITE EL ANIO FINAL");
+					int todayYear2 = scanInt.nextInt();
+					System.out.println(vete.servicesProvided(todayDay1, todayMonth1, todayYear1, todayDay2, todayMonth2, todayYear2));
+				break;
 				default:
 					System.out.println ("DIGITO NO VALIDO");
 			}
@@ -373,6 +389,7 @@ public class Main{
 		System.out.println("15. SABER EL TOTAL DE INGRESOS: ");
 		System.out.println("16. SABER EL PROMEDIO DE LOS INGRESOS DE SERVICIOS");
 		System.out.println("17. SABER EL PROMEDIO DE UNA SEMANA");
+		System.out.println("18. PARA SABER LOS SERVICIOS TOMADOS EN UN RANGO");
 		System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||");
 	}
 }

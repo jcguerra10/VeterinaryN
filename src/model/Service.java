@@ -142,4 +142,22 @@ public class Service{
         return range;
     }
 
+    public boolean knowRange(int todayDayA, int todayMonthA, int todayYearA, int todayDayB, int todayMonthB, int todayYearB){
+        boolean range = false;
+        if (dateOfService.getYear() >= todayYearA && dateOfService.getYear() <= todayYearB) {
+            if (dateOfService.getMonth() >= todayMonthA && dateOfService.getMonth() <= todayMonthB) {
+                if (dateOfService.getDay()>=todayDayA && dateOfService.getDay()<=todayDayB) {
+                    range = true;
+                }else {
+                    range = false;
+                }
+            }else {
+                range = false;
+            }
+        }else {
+            range = false;
+        }
+        return range;
+    }
+
 }
