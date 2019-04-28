@@ -51,6 +51,9 @@ public class MiniRoom{
 			msg += pet.getName();
 		return msg;
 	}
+	public void changeHisto(Dated dischargeDate){
+		pet.changeHisto(dischargeDate);
+	}
 	public String getHistoClinic(){
 		String msg = "";
 		if (pet != null){

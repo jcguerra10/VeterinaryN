@@ -94,4 +94,52 @@ public class Service{
         return msg;
     }
 
+    public boolean knowRange(int todayDayA, int todayMonthA, int todayYearA, int todayDayB){
+        boolean range = false;
+        //
+        int todayMonthB = 0;
+        int todayYearB = 0;
+
+        if (todayDayB<todayDayA) {
+            todayMonthB = todayMonthA + 1;
+            if (todayMonthB>12) {
+                todayMonthB -= 12;
+                todayYearB = todayYearA + 1;
+            }else {
+                todayYearB = todayYearA;
+            }
+        }else {
+            todayMonthB = todayMonthA;
+        }
+        //
+        if (dateOfService.getYear() == todayYearA) {
+            if (dateOfService.getMonth() == todayMonthA) {
+                if (dateOfService.getDay()>todayDayA) {
+                    range = true;
+                }else {
+                    range = false;
+                }
+            }else if (dateOfService.getMonth() == todayMonthB) {
+                if (dateOfService.getDay()<todayDayB) {
+                    range = true;
+                }else {
+                    range = false;
+                }
+            }else {
+                range = false;
+            }
+        }else if (dateOfService.getYear() == todayYearB) {
+            if (dateOfService.getMonth() == todayMonthB) {
+                if (dateOfService.getDay()<todayDayB) {
+                    range = true;
+                }else {
+                    range = false;
+                }
+            }else {
+                range = false;
+            }
+        }
+        return range;
+    }
+
 }

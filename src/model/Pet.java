@@ -206,6 +206,10 @@ public class Pet{
 		}
 	}
 
+	public void changeStatus(boolean status){
+		setHospitalizatedNow(status);
+	}
+
 	public double calculatePriceOfPet(int dayCO, int monthCO, int yearCO){
 
 		double tot = 0.0;
@@ -264,6 +268,9 @@ public class Pet{
 		}
 		return tot;
 	}
+	public void changeHisto(Dated dischargeDate){
+		histo.changeHisto(dischargeDate);
+	}
 	/**
 	*Description This method allows to calculate the body mass index for a pet.
 	*pre: The pet was created before and its attributes height and weight are not null neither height must be zero.
@@ -314,6 +321,34 @@ public class Pet{
 		return tot;
 	}
 
+	public double averageOfWeek(int todayDayA, int todayMonthA, int todayYearA, int todayDayB){
+		double average = 0.0;
+		int servIndex = 0;
+		boolean knowhisto = false;
+		if (serv!=null) {
+			for (int i=0;i<serv.size();i++) {
+				if (serv.get(i).knowRange(todayDayA, todayMonthA, todayYearA, todayDayB) == true) {
+					average += serv.get(i).getCost();
+					++servIndex;
+				}
+			}
+		}
+		if (histo != null) {
+			if (histo.getStatus().equals(histo.CLOSE)) {
+				if (histo.knowRange(todayDayA, todayMonthA, todayYearA, todayDayB) == true) {
+					average += calculatePriceOfPet(histo.getDay2(), histo.getMonth2(), histo.getYear2());
+					knowhisto = true;
+				}
+			}
+		}
+		if (knowhisto == true) {
+			servIndex += 1;
+		}
+		if (average != 0.0){
+			average = average/servIndex;
+		}
+		return average;
+	}
 
 
 }

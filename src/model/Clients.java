@@ -137,6 +137,10 @@ public class Clients{
 		return pet.get(indexPetFH);
 	}
 
+	public void changeStatus(int indexPetFH, boolean status){
+		pet.get(indexPetFH).changeStatus(status);
+	}
+
 	public double calculatePriceOfPet(int indexPetCP, int dayT, int monthT, int yearT){
 		double tot = 0.0;
 		tot+=pet.get(indexPetCP).calculatePriceOfPet(dayT, monthT, yearT);
@@ -176,6 +180,23 @@ public class Clients{
 			}
 		}
 		return tot;
+	}
+
+	public double averageOfWeek(int todayDayA, int todayMonthA, int todayYearA, int todayDayB){
+		double average = 0.0;
+		int index = 0;
+		if (pet!=null) {
+			for (int i=0;i<pet.size();i++) {
+				if (pet.get(i).averageOfWeek(todayDayA, todayMonthA, todayYearA, todayDayB) != 0) {
+					average += pet.get(i).averageOfWeek(todayDayA, todayMonthA, todayYearA, todayDayB);
+					index += 1;
+				}
+			}
+		}
+		if (average != 0) {
+			average = average/index;
+		}
+		return average;
 	}
 
 }

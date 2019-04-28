@@ -165,7 +165,7 @@ public class Main{
 					vete.addMedicine(iClient, iPet, newMed);
 				break;
 				case(7):
-					String newHistory = "";
+
 					System.out.println("DIGITE EL DUEÑO DE LA MASCOTA QUE QUIERE HOSPITALIZAR: \n");
 					System.out.println(vete.shortInfoClient());
 					int indexClientFH = scanInt.nextInt();
@@ -173,8 +173,9 @@ public class Main{
 					System.out.println(vete.shortInfoClientPet(indexClientFH));
 					int indexPetFH = scanInt.nextInt();
 					//
+					boolean status = true;
+					vete.changeStatus(indexClientFH, indexPetFH, status);
 					Pet addPet = vete.getPetToMini(indexClientFH, indexPetFH);
-					// newHistory += vete.getHistoClinicSpecific(indexClientFH, indexPetFH);
 					boolean ava = false;
 					//
 					MiniRoom miniWithPet = new MiniRoom (ava, addPet);
@@ -220,7 +221,8 @@ public class Main{
 					System.out.println("EL PRECIO DE DEBE ES: "+vete.calculatePriceOfPet(indexClientDA, indexPetDA, dayD, monthD, yearD));
 					System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 					MiniRoom miniDischarge = new MiniRoom (true, null);
-					System.out.println (vete.dischargeAPet(nameOfDischarge, miniDischarge));
+					Dated dischargeDate = new Dated(dayD, monthD, yearD);
+					System.out.println (vete.dischargeAPet(nameOfDischarge, miniDischarge, dischargeDate));
 				break;
 				case (11):
 					String phPa = "";
@@ -330,6 +332,21 @@ public class Main{
 					System.out.println("EL PROMEDIO DEL SERVICIO Profilaxis Dental: "+vete.averageServicesIncome("Profilaxis Dental")+"\n");
 					System.out.println("EL PROMEDIO DEL SERVICIO Vacunas: "+vete.averageServicesIncome("Vacunas")+"\n");
 				break;
+				case (17):
+					//
+					System.out.println("DIGITE EL DIA QUE EMPIEZA LA SEMANA:\n");
+					int todayDayA = scanInt.nextInt();
+					System.out.println("DIGITE EL MES QUE EMPIEZA LA SEMANA:\n");
+					int todayMonthA = scanInt.nextInt();
+					System.out.println("DIGITE EL ANIO QUE EMPIEZA LA SEMANA:\n");
+					int todayYearA = scanInt.nextInt();
+					int todayDayB = todayDayA + 7;
+					if (todayDayB>30) {
+						todayDayB -= 30;
+					}
+					//
+					System.out.println("EL PROMEDIO DE LAS GANANCIAS EN LA SEMANA ES :"+vete.averageOfWeek(todayDayA, todayMonthA, todayYearA, todayDayB));
+				break;
 				default:
 					System.out.println ("DIGITO NO VALIDO");
 			}
@@ -355,6 +372,7 @@ public class Main{
 		System.out.println("14. REALIZAR UN SERVICIO");
 		System.out.println("15. SABER EL TOTAL DE INGRESOS: ");
 		System.out.println("16. SABER EL PROMEDIO DE LOS INGRESOS DE SERVICIOS");
+		System.out.println("17. SABER EL PROMEDIO DE UNA SEMANA");
 		System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||");
 	}
 }

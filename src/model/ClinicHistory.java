@@ -152,6 +152,16 @@ public class ClinicHistory{
 		return tot;
 	}
 
+	public void changeStatus(){
+		setStatus(OPEN);
+	}
+
+	public void changeHisto(Dated dischargeDate){
+		setStatus(CLOSE);
+		setHistoDate2(dischargeDate);
+
+	}
+
 	public void changeSymptom(String newSymp){
 		String msg = "";
 		//
@@ -170,5 +180,92 @@ public class ClinicHistory{
 	setDiagnosis(msg);
 	}
 
+	public boolean knowRange(int todayDayA, int todayMonthA, int todayYearA, int todayDayB){
+		boolean range = false;
+        //
+        int todayMonthB = 0;
+        int todayYearB = 0;
+
+        if (todayDayB<todayDayA) {
+            todayMonthB = todayMonthA + 1;
+            if (todayMonthB>12) {
+                todayMonthB -= 12;
+                todayYearB = todayYearA + 1;
+            }else {
+                todayYearB = todayYearA;
+            }
+        }else {
+            todayMonthB = todayMonthA;
+        }
+		//
+		if (histoDate1 != null && histoDate2 != null) {
+
+			if (histoDate1.getYear() == todayYearA) {
+	            if (histoDate1.getMonth() == todayMonthA) {
+	                if (histoDate1.getDay()>todayDayA) {
+	                    range = true;
+	                }else {
+	                    range = false;
+	                }
+	            }else if (histoDate1.getMonth() == todayMonthB) {
+	                if (histoDate1.getDay()<todayDayB) {
+	                    range = true;
+	                }else {
+	                    range = false;
+	                }
+	            }else {
+	                range = false;
+	            }
+	        }else if (histoDate1.getYear() == todayYearB) {
+	            if (histoDate1.getMonth() == todayMonthB) {
+	                if (histoDate1.getDay()<todayDayB) {
+	                    range = true;
+	                }else {
+	                    range = false;
+	                }
+	            }else {
+	                range = false;
+	            }
+	        }
+			//
+			if (histoDate2.getYear() == todayYearA) {
+	            if (histoDate2.getMonth() == todayMonthA) {
+	                if (histoDate2.getDay()>todayDayA) {
+	                    range = true;
+	                }else {
+	                    range = false;
+	                }
+	            }else if (histoDate2.getMonth() == todayMonthB) {
+	                if (histoDate2.getDay()<todayDayB) {
+	                    range = true;
+	                }else {
+	                    range = false;
+	                }
+	            }else {
+	                range = false;
+	            }
+	        }else if (histoDate2.getYear() == todayYearB) {
+	            if (histoDate2.getMonth() == todayMonthB) {
+	                if (histoDate2.getDay()<todayDayB) {
+	                    range = true;
+	                }else {
+	                    range = false;
+	                }
+	            }else {
+	                range = false;
+	            }
+	        }
+		}
+        return range;
+    }
+	public int getDay2(){
+		return histoDate2.getDay();
+	}
+	public int getMonth2(){
+		return histoDate2.getMonth();
+	}
+	public int getYear2(){
+		return histoDate2.getYear();
+	}
 
 }

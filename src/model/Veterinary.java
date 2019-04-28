@@ -14,6 +14,16 @@ public class Veterinary{
 	public Veterinary (String name){
 		this.name = name;
 		client = new ArrayList<Clients>();
+		Clients juan = new Clients("Juan Camilo", 1006035126, "cll 16 #101", "3012391474");
+		client.add(juan);
+		Pet paca = new Pet("paquita", "perro", 10, 6, 1.2, true, false, null);
+		addPettoClient(paca, 0);
+		Pet luna = new Pet("luna", "gato", 9, 5, 0.9, false, false, null);
+		addPettoClient(luna, 0);
+		Clients isabella = new Clients("isabella", 1006588756, "cll 6 #51", "3212874174");
+		client.add(isabella);
+
+		//
 		mini = new MiniRoom[MINI_ROOM];
 
 		mini[0] = new MiniRoom (true, null);
@@ -139,6 +149,10 @@ public class Veterinary{
 		return msg;
 	}
 
+	public void changeStatus(int indexClientFH, int indexPetFH, boolean status){
+		client.get(indexClientFH).changeStatus(indexPetFH, status);
+	}
+
 	public String show(){
 		String msg = "";
 		for(int i=0;i<mini.length;i++){
@@ -155,12 +169,13 @@ public class Veterinary{
 		return tot;
 	}
 
-	public String dischargeAPet(String nameOfDischarge, MiniRoom miniDischarge){
+	public String dischargeAPet(String nameOfDischarge, MiniRoom miniDischarge, Dated dischargeDate){
 		String msg = "";
 		for(int i=0;i<mini.length; i++){
 			if(mini!=null){
 				if(mini[i].showNamePet().equals(nameOfDischarge)){
-					mini[i]=miniDischarge;
+					mini[i].changeHisto(dischargeDate);
+					mini[i] = miniDischarge;
 					msg += "SE HA DADO DE ALTA AL ANIMAL";
 				}
 			}
@@ -215,6 +230,23 @@ public class Veterinary{
 			tot = tot/div;
 		}
 		return tot;
+	}
+
+	public double averageOfWeek(int todayDayA, int todayMonthA, int todayYearA, int todayDayB){
+		double average = 0.0;
+		int index = 0;
+		if (client != null) {
+			for (int i=0;i<client.size();i++) {
+				if (client.get(i).averageOfWeek(todayDayA, todayMonthA, todayYearA, todayDayB) != 0) {
+					average += client.get(i).averageOfWeek(todayDayA, todayMonthA, todayYearA, todayDayB);
+					index += 1;
+				}
+			}
+		}
+		if (average != 0) {
+			average = average/index;
+		}
+		return average;
 	}
 
 }
