@@ -51,6 +51,17 @@ public class Pet{
 	private Clients cli;
 	private ArrayList<Service>serv;
 	//
+	/**
+	 *
+	 * @param name
+	 * @param type
+	 * @param age
+	 * @param weight
+	 * @param height
+	 * @param hospitalizatedBefore
+	 * @param hospitalizatedNow
+	 * @param histo
+	 */
 	public Pet(String name, String type, int age, double weight, double height, boolean hospitalizatedBefore, boolean hospitalizatedNow, ClinicHistory histo){
 		this.name = name;
 		this.type = type;
@@ -63,80 +74,165 @@ public class Pet{
 		serv = new ArrayList<Service>();
 	}
 	//get set
+	/**
+	 *
+	 * @return name
+	 */
 	public String getName(){
 		return name;
 	}
+	/**
+     *
+     * @param name
+	 */
 	public void setName(String name){
 		this.name = name;
 	}
-
+	/**
+     *
+     * @return type
+     */
 	public String getType(){
 		return type;
 	}
+	/**
+     *
+     * @param type
+     */
 	public void setType(String type){
 		this.type = type;
 	}
-
+	/**
+     *
+     * @return age
+     */
 	public int getAge(){
 		return age;
 	}
+	/**
+     *
+     * @param age
+     */
 	public void setType(int age){
 		this.age = age;
 	}
-
+	/**
+     *
+     * @return weight
+     */
 	public double getWeight(){
 		return weight;
 	}
+	/**
+     *
+     * @param weight
+     */
 	public void setWeight(double weight){
 		this.weight = weight;
 	}
-
+	/**
+     *
+     * @return height
+     */
 	public double getHeight(){
 		return height;
 	}
+	/**
+     *
+     * @param height
+     */
 	public void setHeight(double height){
 		this.height = height;
 	}
-
+	/**
+     *
+     * @return hospitalizatedBefore
+     */
 	public boolean getHospitalizatedBefore(){
 		return hospitalizatedBefore;
 	}
+	/**
+     *
+     * @param hospitalizatedBefore
+     */
 	public void setHospitalizatedBefore(boolean hospitalizatedBefore){
 		this.hospitalizatedBefore = hospitalizatedBefore;
 	}
-
+	/**
+     *
+     * @return hospitalizatedNow
+     */
 	public boolean getHospitalizatedNow(){
 		return hospitalizatedNow;
 	}
+	/**
+     *
+     * @param hospitalizatedNow
+     */
 	public void setHospitalizatedNow(boolean hospitalizatedNow){
 		this.hospitalizatedNow = hospitalizatedNow;
 	}
-
+	/**
+     *
+     * @return histo
+     */
 	public ClinicHistory getHisto(){
 		return histo;
 	}
+	/**
+     *
+     * @param histo
+     */
 	public void setHisto(ClinicHistory histo){
 		this.histo = histo;
 	}
+	/**
+     *
+     * @return cli
+     */
 	public Clients getCli(){
 		return cli;
 	}
+	/**
+     *
+     * @param cli
+     */
 	public void setCli(Clients Cli){
 		this.cli = cli;
 	}
+	/**
+     *
+     * @return serv
+     */
 	public ArrayList<Service> getService(){
 		return serv;
 	}
+	/**
+     *
+     * @param serv
+     */
 	public void setService(ArrayList<Service>serv){
 		this.serv = serv;
 	}
 
 	//methods
+	/**
+	 * Description: add a new clinic history for the pet
+	 * @param statush it is the status of the new clinic history
+	 * @param symptomh it is the symptom of the new clinic history
+	 * @param diagnosish it is the diagnosis of the new clinic history
+	 * @param histoDate1h it is the date of entering in the MiniRoom of the new clinic history
+	 * @param histoDate2h it is the date of discharge of the new clinic history
+	 */
 	public void addHistoInfo(String statush, String symptomh, String diagnosish, Dated histoDate1h, Dated histoDate2h){
 		ClinicHistory histoh = new ClinicHistory(statush, symptomh, diagnosish, histoDate1h, histoDate2h);
 		setHisto(histoh);
 	}
 
+	/**
+	 * Description: show the information of the pet with the history clinic
+	 * @return msg
+	 */
 	public String infoPet(){
 		String msg = "";
 		msg += "><><><><><><><><><><><><><><><><><><><><><><><><><><><\n";
@@ -173,7 +269,10 @@ public class Pet{
 		}
 		return msg;
 	}
-
+	/**
+	 * Description: it is to get the clinic history
+	 * @return msg
+	 */
 	public String getClinicHistoryPet(){
 		String msg = "";
 		if(cli!=null){
@@ -200,16 +299,32 @@ public class Pet{
 			msg += histo.getDiagnosis()+"\n";
 		return msg;
 	}
+
+	/**
+	 * Description: search the method addmedicine() in histoh
+	 * @param newMed it is the new Medicine
+	 */
 	public void addMedicine(Medicine newMed){
 		if(histo!=null){
 			histo.addMedicine(newMed);
 		}
 	}
 
+	/**
+	 * Description: change the status of hospitalizatedNow()
+	 * @param status it is the new status of the hospitalization
+	 */
 	public void changeStatus(boolean status){
 		setHospitalizatedNow(status);
 	}
 
+	/**
+	 * Description: calculate the price of the pet with the days of stay and with the day of today
+	 * @param dayCO it is today day
+	 * @param monthCO it is today month
+	 * @param yearCO it is today year
+	 * @return tot
+	 */
 	public double calculatePriceOfPet(int dayCO, int monthCO, int yearCO){
 
 		double tot = 0.0;
@@ -268,6 +383,10 @@ public class Pet{
 		}
 		return tot;
 	}
+	/**
+	 *Description: search the method in histo changeHisto()
+	 *@param dischargeDate it is the date of pet discharge
+	 */
 	public void changeHisto(Dated dischargeDate){
 		histo.changeHisto(dischargeDate);
 	}
@@ -287,19 +406,42 @@ public class Pet{
 		}
 		return tot;
 	}
+
+	/**
+	 *Description: search in histo the method changeSymptom()
+	 *@param newSymp are the new symptom
+	 */
 	public void changeSymptom(String newSymp){
 		histo.changeSymptom(newSymp);
 	}
+	/**
+	 *Description: search in histo the method addNotes()
+	 *@param newNotes are the new notes
+	 */
 	public void addNotes(String newNotes){
    		histo.addNotes(newNotes);
 	}
 
+	/**
+	 * Description: add a new service
+	 * post: add a new service with the date of made
+	 * @param servv it is the type of Service
+	 * @param idCli it is the id of the client
+	 * @param todayDays it is the day of today
+	 * @param todayMonths it is the month of today
+	 * @param todayYears it is the year of today
+	 */
 	public void newService(String servv, int idCli, int todayDays, int todayMonths, int todayYears){
 		Dated addDate = new Dated(todayDays, todayMonths, todayYears);
 		Service addService = new Service (servv, 0, getName(), idCli, addDate);
 		serv.add(addService);
 		serv.get(serv.size()-1).setIncome();
 	}
+
+	/**
+	* Description: is to have the cost of the service
+	* @return tot
+	*/
 	public double totService(){
 		double tot = 0.0;
 		if (serv!=null){
@@ -309,6 +451,11 @@ public class Pet{
 		}
 		return tot;
 	}
+
+	/**
+	 * Description: is to get a cost for an especific service
+	 * @param typeS is the type of the service
+	 */
 	public double averageServicesIncome(String typeS){
 		double tot = 0.0;
 		if (serv!=null) {
@@ -321,6 +468,14 @@ public class Pet{
 		return tot;
 	}
 
+	/**
+	 * Description: is to get the average of the week
+	 * @param todayDayA it is the today day
+	 * @param todayMonthA it is the today month
+	 * @param todayYearA it is the today year
+	 * @param todayDayB it is the day limit of the week
+	 * @return average
+	 */
 	public double averageOfWeek(int todayDayA, int todayMonthA, int todayYearA, int todayDayB){
 		double average = 0.0;
 		int servIndex = 0;
@@ -349,7 +504,16 @@ public class Pet{
 		}
 		return average;
 	}
-
+	/**
+	 * Description: this method allows to know the services provied between to dates
+	 * @param todayDayA the first day
+	 * @param todayMonthA the firt month
+	 * @param todayYearA the first year
+	 * @param todayDayB the second day
+	 * @param todayMonthB the second month
+	 * @param todayYearB the second year
+	 * @return msg
+	 */
 	public String servicesProvided(int todayDayA, int todayMonthA, int todayYearA, int todayDayB, int todayMonthB, int todayYearB){
 		String msg = "";
 		//
